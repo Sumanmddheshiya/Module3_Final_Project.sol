@@ -6,39 +6,17 @@ the contract owner should be able to mint tokens to a provided address. Any user
 // SPDX-License-Identifier: MIT    
 
 pragma solidity ^0.8.0; 
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Myether is ERC20 {
+contract CustomToken is ERC20, ERC20Burnable, Ownable {
+    constructor() ERC20("MyToken", "MyTk") {}
 
-    address private owner;
-
-    constructor() ERC20("Khushi", "kk")
-    {
-        owner = msg.sender;
-    }
-
-    modifier onlyOwner()
-    {
-        require(msg.sender == owner, "Only the contract owner has rights over this function!");
-        _;
-    }
-
-    function mintToken(address to, uint256 amount) public onlyOwner
-    {
+    function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
-    }
-
-    function burnToken(uint256 amount) public {
-        _burn(msg.sender, amount);
-    }
-
-    function transferTokens(address to, uint256 amount) public override returns (bool) {
-
-        require(amount <= balanceOf(msg.sender), "Not enough balance to Transfer!");
-
-        _transfer(msg.sender, to, amount);
-
-        return true;
     }
 }
