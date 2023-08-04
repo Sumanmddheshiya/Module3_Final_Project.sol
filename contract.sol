@@ -14,7 +14,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract CustomToken is ERC20, ERC20Burnable, Ownable {
-    constructor() ERC20("MyToken", "MyTk") {}
+    constructor() ERC20("Suman", "Maddheshiya") {}
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
