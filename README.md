@@ -106,7 +106,7 @@ This function allows the contract owner to mint new tokens. It takes two paramet
 ```solidity
 
 function burn(uint256 amount) public {
-        _burn(msg.sender, amount);
+        _burn(msg.sender, amount)
     }
   
 ```
