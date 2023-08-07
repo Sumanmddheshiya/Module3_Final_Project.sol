@@ -11,6 +11,11 @@ These transactions are performed after connecting Remix IDE from MetaMask wallet
 ## Getting Started
 
 ### Executing program
+ERC20: This is the standard ERC20 token contract implementation, providing basic functionality for a fungible token. ERC20Burnable: This contract extends ERC20 and adds the ability to burn (destroy) tokens. Ownable: This contract provides a basic access control mechanism, allowing only the contract owner to execute certain functions. The CustomToken contract is defined and inherits from ERC20, ERC20Burnable, and Ownable.
+
+The constructor function is defined without any parameters. It is executed once when the contract is deployed. Within the constructor, the ERC20 constructor is called with the name "MyToken" and symbol "MyTk" to initialize the token.
+
+The mint function is a public function that can only be called by the contract owner (as defined by the Ownable contract). It takes two parameters: to (the address to which the tokens will be minted) and amount (the number of tokens to mint). Inside the function, the _mint function from the ERC20 contract is called to create and assign the specified amount of tokens to the given address.
 
 To run this program, I have used online Remix Solidity IDE. You can visit the Remix website at https://remix.ethereum.org/ .
 Extension used for creating a new file is .sol , example: fileName.sol
@@ -69,7 +74,7 @@ This declares a private state variable owner of type address. It will be used to
 
 ```solidity
 
-constructor() ERC20("Khushi", "kk") {
+constructor() ERC20("MyToken", "MyK") {
         owner = msg.sender;
     }
   
